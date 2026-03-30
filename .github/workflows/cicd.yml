@@ -32,5 +32,4 @@ jobs:
         run: |
           echo "${{ secrets.SSH_KEY }}" > key.pem
           chmod 600 key.pem
-          ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ 
-          secrets.SSH_HOST }}" \ "powershell -Executionpolicy Bypass -File 'C:\\Users\\pc\\Desktop\\TP5Docker\\deploy.ps1' -DockerUser ${{ secrets.DOCKERHUB_USERNAME }} -DockerToken ${{ secrets.DOCKERHUB_TOKEN }}"
+          ssh -i key.pem -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}@${{secrets.SSH_HOST }}" "powershell -Executionpolicy Bypass -File 'C:\\Users\\pc\\Desktop\\TP5Docker\\deploy.ps1' -DockerUser ${{ secrets.DOCKERHUB_USERNAME }} -DockerToken ${{ secrets.DOCKERHUB_TOKEN }}"
