@@ -1,7 +1,7 @@
 name: ci-cd.yaml
 on:
   push:
-    - branches:
+    branches:
         - main
 jobs:
   ci:
@@ -30,7 +30,7 @@ jobs:
           docker push man3rf/flask_devops_demo:latest
       - name: Deploy via SSH
         run: |
-          echo "{{ secrets.SSH_KEY }}" > key.pem
+          echo "${{ secrets.SSH_KEY }}" > key.pem
           chmod 600 key.pem
           ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ 
           secrets.SSH_HOST }}" \ "powershell -Executionpolicy Bypass -File 'C:\\Users\\pc\\Desktop\\TP5Docker\\deploy.ps1' -DockerUser ${{ secrets.DOCKERHUB_USERNAME }} -DockerToken ${{ secrets.DOCKERHUB_TOKEN }}"
